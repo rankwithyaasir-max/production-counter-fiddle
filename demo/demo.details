@@ -1,0 +1,8 @@
+---
+name: Production Counter
+description: Track units on the line — a free production counter for factories and workshops.
+authors:
+  - Yasir Shafique
+resources: []
+normalize_css: no
+load_type: b
