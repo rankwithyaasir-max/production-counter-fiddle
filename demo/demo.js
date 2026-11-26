@@ -1,0 +1,8 @@
+var count=0,total=0,startTime=null;
+var countEl=document.getElementById('count'),totalEl=document.getElementById('totalCount'),rateEl=document.getElementById('tapRate'),labelEl=document.getElementById('rowLabel');
+function updateRate(){if(!startTime||total===0){rateEl.textContent='0';return;}var mins=(Date.now()-startTime)/60000;rateEl.textContent=mins>0?Math.round(total/mins):total;}
+document.getElementById('plusBtn').addEventListener('click',function(){if(!startTime)startTime=Date.now();count++;total++;countEl.textContent=count;totalEl.textContent=total;labelEl.textContent='Keep going — '+count+' counted';updateRate();});
+document.getElementById('minusBtn').addEventListener('click',function(){if(count>0){count--;countEl.textContent=count;labelEl.textContent='Stepped back one — '+count+' counted';}});
+document.getElementById('resetBtn').addEventListener('click',function(){count=0;total=0;startTime=null;countEl.textContent='0';totalEl.textContent='0';rateEl.textContent='0';labelEl.textContent='Tap to start counting';});
+document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var open=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-q span:last-child').textContent='+';});if(!open){item.classList.add('open');btn.querySelector('span:last-child').textContent='−';}});});
+document.querySelectorAll('[data-target]').forEach(function(b){b.addEventListener('click',function(){var el=document.getElementById(b.getAttribute('data-target'));if(el){el.scrollIntoView({behavior:'smooth'});}});});
